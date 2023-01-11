@@ -29,9 +29,9 @@ jobs:
         distribution: 'corretto'
         server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file.
+    - name: view settings.xml
+      run: cat /home/runner/work/TestMavenRelease/TestMavenRelease/settings.xml
     - name: Publish JAR
       run: ./mvnw -B release:prepare
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
