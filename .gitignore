@@ -1,7 +1,6 @@
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
-!pom.xml.releaseBackup
 !**/src/main/**/target/
 !**/src/test/**/target/
 
