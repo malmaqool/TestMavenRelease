@@ -3,7 +3,7 @@ on: [workflow_dispatch]
 
 jobs:
   build:
-    if: ${{startsWith('refs/tags/', github.ref)}}
+    if: ${{ startsWith(github.ref, 'refs/tags') }}
     runs-on: ubuntu-latest
     steps:
     - name: log a message
@@ -12,4 +12,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: log a message
-      run: echo ${{github.ref}}
+      run: echo ${{ github.ref }}
