@@ -14,3 +14,5 @@ jobs:
     steps:
     - name: log a message
       run: echo "::error file=deploy-main.yml,line=6,col=5,endColumn=50::You can only run the deploy workflow on a release tag."
+    - name: Exit
+      run: exit 1
