@@ -1,0 +1,10 @@
+name: Deploy master
+on: [workflow_dispatch]
+
+jobs:
+  build:
+    if: startsWith('refs/tags/', github.ref)
+    runs-on: ubuntu-latest
+    steps:
+    - name: log a message
+      run: echo "it is a tag"
