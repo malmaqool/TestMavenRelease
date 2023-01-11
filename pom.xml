@@ -16,7 +16,11 @@
     <properties>
         <java.version>17</java.version>
         <spring-cloud.version>2021.0.5</spring-cloud.version>
+        <project.scm.id>github</project.scm.id>
     </properties>
+    <scm>
+        <developerConnection>scm:git:https://github.com/malmaqool/TestMavenRelease.git</developerConnection>
+    </scm>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
