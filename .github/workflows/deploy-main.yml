@@ -29,6 +29,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: log a message
-      run: echo "::error file=deploy-main.yml,line=6,col=5,endColumn=50::You can only run the deploy workflow on a release tag. ${{ github.sha }}"
-    - name: Exit
-      run: exit 1
+      run: |
+        echo "::error file=deploy-main.yml,line=6,col=5,endColumn=50::You can only run the deploy workflow on a release tag. ${{ github.sha }}"
+        exit 1
