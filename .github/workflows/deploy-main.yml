@@ -16,7 +16,7 @@ jobs:
     env:
       Label: ${{ startsWith(github.ref, 'refs/tags') && github.ref_name ||  format('{0}-{1}', github.ref_name, github.SHA)  }}
     steps:
-    - name: ${{$Label}}
+    - name: ${{ evv.Label }}
       run: echo "The label is $Label"
     - name: Check is it a production deployment?
       if: ${{ (inputs.environment == 'test-and-prod' || inputs.environment == 'prod') && !startsWith(github.ref, 'refs/tags') }}
