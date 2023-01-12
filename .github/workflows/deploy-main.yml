@@ -15,8 +15,15 @@ jobs:
     if: ${{ startsWith(github.ref, 'refs/tags') }}
     runs-on: ubuntu-latest
     steps:
-    - name: log a message
-      run: echo "it is a tag ${{ github.ref_name }}.zip to be deployed to ${{ inputs.environment == 'test-and-prod'}}"
+    - name: log a message test-and-prod
+      if: inputs.environment == 'test-and-prod'
+      run: echo "it is a tag ${{ github.ref_name }}.zip to be deployed to test-and-prod"
+    - name: log a message test
+      if: inputs.environment == 'test'
+      run: echo "it is a tag ${{ github.ref_name }}.zip to be deployed to test"
+    - name: log a message prod
+      if: inputs.environment == 'prod'
+      run: echo "it is a tag ${{ github.ref_name }}.zip to be deployed to prod"
   report-error:
     if: ${{ !startsWith(github.ref, 'refs/tags') }}
     runs-on: ubuntu-latest
