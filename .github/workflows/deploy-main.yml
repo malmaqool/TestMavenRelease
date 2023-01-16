@@ -18,8 +18,9 @@ jobs:
     steps:
     - name: Retrieve version
       run: |
-       echo "TAG_NAME=$(ls .mvn/wrapper/*.jar" >> $GITHUB_OUTPUT
+       echo "TAG_NAME=$(ls .mvn/wrapper/*.jar)" >> $GITHUB_OUTPUT
       id: version
+
     - name: ${{ env.Label }}
       run: echo "The label is $Label and the jar file name is ${{steps.version.outputs.TAG_NAME}}"
       
