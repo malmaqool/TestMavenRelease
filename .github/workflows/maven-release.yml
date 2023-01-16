@@ -24,7 +24,7 @@ jobs:
         git config user.name "malmaqool"
     - name: Retrieve version
       run: |
-       echo "TAG_NAME=$(ls .mvn/wrapper/*.jar)" >> $GITHUB_OUTPUT
+       echo "TAG_NAME=$(ls .mvn/wrapper/*.jar | xargs -n 1 basename)" >> $GITHUB_OUTPUT
       id: version
 
     - name: Print wrapper file name
