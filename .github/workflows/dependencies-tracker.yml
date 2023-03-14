@@ -1,0 +1,22 @@
+name: DependencyTrackerWorkFlow
+
+on: [push]
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        env:
+          Label: ${{ startsWith(github.ref, 'refs/tags') && github.ref_name ||  format('{0}-{1}', github.ref_name, github.SHA)  }}
+        steps:
+            - uses: actions/checkout@v2
+            # Generates a BoM and uploads it to OWASP Dependency Track
+            - name: Generates BoM and upload to OWASP Dependency Tracker
+              id: riskscoreFromDT
+              uses:  Quobis/action-owasp-dependecy-track-check@main
+              with:
+                serverhostname: 'dependencytracker.endios.one'
+                port: 8080
+                protocol: 'http'
+                apikey: ${{ secrets.OWASP_DEPENDENCY_TRACKER_KEY }}
+                projectname: 'Example Project'
+                projectversion: ${{ env.Label }}
