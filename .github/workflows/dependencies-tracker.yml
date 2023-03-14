@@ -28,5 +28,6 @@ jobs:
                 protocol: 'http'
                 bomfilename: 'target/bom.xml'
                 apikey: ${{ secrets.OWASP_DEPENDENCY_TRACKER_KEY }}
+                project: 'fca6f387-94d5-4cdf-90fd-409a4ea755be'
                 projectname: 'Example Project'
                 projectversion: ${{ env.Label }}
