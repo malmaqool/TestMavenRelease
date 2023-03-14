@@ -31,3 +31,4 @@ jobs:
                 project: 'fca6f387-94d5-4cdf-90fd-409a4ea755be'
                 projectname: 'Example Project'
                 projectversion: ${{ env.Label }}
+
