@@ -12,7 +12,7 @@ jobs:
             # Generates a BoM and uploads it to OWASP Dependency Track
             - name: Generates BoM and upload to OWASP Dependency Tracker
               id: riskscoreFromDT
-              uses:  Quobis/action-owasp-dependecy-track-check@main
+              uses:  DependencyTrack/gh-upload-sbom@v1.0.0
               with:
                 serverhostname: 'dependencytracker.endios.one'
                 port: 8080
