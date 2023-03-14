@@ -21,7 +21,7 @@ jobs:
             # Generates a BoM and uploads it to OWASP Dependency Track
             - name: Generates BoM and upload to OWASP Dependency Tracker
               id: riskscoreFromDT
-              uses:  DependencyTrack/gh-upload-sbom@v1.0.0
+              uses:  DependencyTrack/gh-upload-sbom@@master
               with:
                 serverhostname: 'dependencytracker.endios.one'
                 port: 8080
