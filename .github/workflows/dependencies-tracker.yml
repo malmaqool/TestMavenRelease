@@ -19,16 +19,16 @@ jobs:
             - name: compile project
               run: ./mvnw compile
             # Generates a BoM and uploads it to OWASP Dependency Track
-            - name: Generates BoM and upload to OWASP Dependency Tracker
-              id: riskscoreFromDT
-              uses:  DependencyTrack/gh-upload-sbom@master
-              with:
-                serverhostname: 'dependencytracker.endios.one'
-                port: 8080
-                protocol: 'http'
-                bomfilename: 'target/bom.xml'
-                apikey: ${{ secrets.OWASP_DEPENDENCY_TRACKER_KEY }}
-                project: 'fca6f387-94d5-4cdf-90fd-409a4ea755be'
-                projectname: 'Example Project'
-                projectversion: ${{ env.Label }}
+            #- name: Generates BoM and upload to OWASP Dependency Tracker
+            #  id: riskscoreFromDT
+            #  uses:  DependencyTrack/gh-upload-sbom@master
+            #  with:
+            #    serverhostname: ''
+            #    port: 8080
+            #    protocol: 'http'
+            #    bomfilename: 'target/bom.xml'
+            #    apikey: ${{ secrets.OWASP_DEPENDENCY_TRACKER_KEY }}
+            #    project: 'fca6f387-94d5-4cdf-90fd-409a4ea755be'
+            #    projectname: 'Example Project'
+            #    projectversion: ${{ env.Label }}
 
