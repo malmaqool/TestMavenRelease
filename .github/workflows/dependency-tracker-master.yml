@@ -1,0 +1,30 @@
+name: DependencyTrackerMasterWorkFlow
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'corretto'
+          server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
+          settings-path: ${{ github.workspace }} # location for the settings.xml file.
+      - name: compile project
+        run: ./mvnw cyclonedx:makeBom -f pom.xml
+      # Generates a BoM and uploads it to OWASP Dependency Track
+        # - name: Generates BoM and upload to OWASP Dependency Tracker
+        #   id: riskScoreFromDT
+        #   uses:  DependencyTrack/gh-upload-sbom@master
+          #   with:
+          #   serverhostname: 'dependencytracker.endios.one'
+          #   port: 8080
+          #   protocol: 'http'
+          #   bomfilename: 'target/bom.xml'
+          #   apikey: ${{ secrets.OWASP_DEPENDENCY_TRACKER_KEY }}
+        #   project: '6e66e452-b712-489e-b22e-aea6cbf55a15'

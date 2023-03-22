@@ -1,0 +1,13 @@
+name: DependencyTrackerMasterWorkFlow
+on:
+  push:
+    branches:
+      - main
+      - development
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print GitHub event action
+        run: |
+            echo "${{ github.event.action }}"
