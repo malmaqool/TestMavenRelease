@@ -8,6 +8,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Print GitHub event action
+      - name: Print GitHub event action development
+        if: github.ref_name == 'development'
         run: |
-            echo "${{ github.event.action }} - ${{ github.event_name }} - ${{ github.ref_name }}"
+            echo "it is the Development branch value of ref_name is:  ${{ github.ref_name }}"
+      - name: Print GitHub event action main
+        if: github.ref_name == 'main'
+        run: |
+          echo "it is the Main branch value of ref_name is: ${{ github.ref_name }}"
