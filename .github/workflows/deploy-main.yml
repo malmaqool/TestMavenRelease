@@ -9,17 +9,25 @@ on:
         - test
         - prod
         - test-and-prod
+      packageDescription:
+        type: string
+        required: false
+        description: 'AWS package description'
 
 jobs:
   build:
     runs-on: ubuntu-latest
     env:
       Label: ${{ startsWith(github.ref, 'refs/tags') && github.ref_name ||  format('{0}-{1}', github.ref_name, github.SHA)  }}
+      Pkg: ${{ github.event.inputs.packageDescription != '' && github.event.inputs.packageDescription ||  format('{0} - {1}', 'Commit', github.SHA)  }}
     steps:
     - name: Retrieve version
       run: |
        echo "TAG_NAME=$(ls .mvn/wrapper/*.jar)" >> $GITHUB_OUTPUT
       id: version
+
+    - name: ${{ env.Pkg }}
+      run: echo "The Pkg is $Pkg"
 
     - name: ${{ env.Label }}
       run: echo "The label is $Label and the jar file name is ${{steps.version.outputs.TAG_NAME}}"
